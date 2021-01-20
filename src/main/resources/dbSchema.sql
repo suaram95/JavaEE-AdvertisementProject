@@ -31,11 +31,11 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `item_ibfk_1` (`user_id`),
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `item` */
 
-insert  into `item`(`id`,`title`,`description`,`price`,`category`,`created_date`,`user_id`) values (3,'fsdfsdf','sdfsdf',145,'CAR','2021-01-12',4),(8,'sdfsdf','sdfsdfsdf',2513,'CAR','2021-01-18',4);
+insert  into `item`(`id`,`title`,`description`,`price`,`category`,`created_date`,`user_id`) values (9,'dsfsdfsdf','sdfsdfds',2513,'CAR','2021-01-20',7),(10,'sdfsdf','sdfdsf',2513,'HOUSES','2021-01-20',7);
 
 /*Table structure for table `user` */
 
@@ -49,12 +49,13 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `user_type` enum('USER','ADMIN') NOT NULL,
+  `picture_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`name`,`surname`,`phone_number`,`username`,`password`,`user_type`) values (1,'admin','admin','0000','admin','admin','ADMIN'),(4,'user','user','1111','user','user','USER');
+insert  into `user`(`id`,`name`,`surname`,`phone_number`,`username`,`password`,`user_type`,`picture_url`) values (1,'admin','admin','0000','admin','admin','ADMIN',NULL),(7,'user','user','user','user','user','USER','161114816764020161101111253.jpg'),(9,'dsfsdfsdf','sdfsdfsdf','sdfsdf','sdfsdfsdf','sdfsdfsdf','USER','161114792184720181108_202808.jpg'),(10,'ghjghjghghj','ghjgjgh','ghjghjg','ghjgjghj','ghjghjghj','USER','161114793594820190826_231042.jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
