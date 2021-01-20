@@ -19,11 +19,11 @@ public class DeleteItemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User currentUser = (User) req.getSession().getAttribute("currentUser");
-        if (currentUser != null && currentUser.getUserType() == UserType.ADMIN) {
+        if (currentUser.getUserType() == UserType.ADMIN) {
             String id = req.getParameter("id");
             itemManager.deleteItemById(Integer.parseInt(id));
             resp.sendRedirect("/adminHome");
-        } else if (currentUser != null && currentUser.getUserType() == UserType.USER) {
+        } else {
             String id = req.getParameter("id");
             itemManager.deleteItemByItemIdAndUserId(Integer.parseInt(id), currentUser.getId());
             resp.sendRedirect("/userHome");

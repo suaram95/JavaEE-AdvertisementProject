@@ -21,14 +21,12 @@ public class UserHomeServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User currentUser = (User) req.getSession().getAttribute("currentUser");
-        if (currentUser != null && currentUser.getUserType() == UserType.USER) {
-            req.setAttribute("users", userManager.getAllUsers());
-            req.setAttribute("items", itemManager.getAllItems());
-            req.setAttribute("currentUserItems", itemManager.getItemsByUserId(currentUser.getId()));
-            req.getRequestDispatcher("/userHome.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect("/");
-        }
+
+        req.setAttribute("users", userManager.getAllUsers());
+        req.setAttribute("items", itemManager.getAllItems());
+        req.setAttribute("currentUserItems", itemManager.getItemsByUserId(currentUser.getId()));
+        req.getRequestDispatcher("/userHome.jsp").forward(req, resp);
+
 
     }
 }
