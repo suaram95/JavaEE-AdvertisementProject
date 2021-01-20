@@ -27,6 +27,7 @@
             <td style="color: royalblue">PhoneNumber</td>
             <td style="color: royalblue">Username</td>
             <td style="color: royalblue">UserType</td>
+            <td style="color: royalblue">Profile Picture</td>
             <td style="color: royalblue">Action</td>
         </tr>
         <% for (User user : userList) {%>
@@ -43,6 +44,9 @@
             </td>
             <td><%=user.getUserType()%>
             </td>
+            <td><%if (user.getPictureUrl()!=null){%>
+                <img src="/image?path=<%=user.getPictureUrl()%>" width="30" alt="">
+                <%}%></td>
             <td><a href="/deleteUser?id=<%=user.getId()%>">Delete</a></td>
         </tr>
         <% }%>

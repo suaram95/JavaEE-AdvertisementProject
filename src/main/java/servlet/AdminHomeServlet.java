@@ -2,8 +2,6 @@ package servlet;
 
 import manager.ItemManager;
 import manager.UserManager;
-import model.User;
-import model.UserType;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

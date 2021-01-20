@@ -23,13 +23,14 @@ public class UserManager {
         }
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO user(name,surname,phone_number,username,password) " +
-                            "VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO user(name,surname,phone_number,username,password,picture_url) " +
+                            "VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getName());
             statement.setString(2, user.getSurname());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
+            statement.setString(6, user.getPictureUrl());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -103,7 +104,6 @@ public class UserManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
@@ -115,19 +115,21 @@ public class UserManager {
                 .username(resultSet.getString(5))
                 .password(resultSet.getString(6))
                 .userType(UserType.valueOf(resultSet.getString(7)))
+                .pictureUrl(resultSet.getString(8))
                 .build();
     }
 
     public void updateUserData(int currentUserId, User user) {
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE user SET name=?,surname=?,phone_number=?,username=?,password=? WHERE id=? ");
+                    "UPDATE user SET name=?,surname=?,phone_number=?,username=?,password=?,picture_url=? WHERE id=? ");
             statement.setString(1, user.getName());
             statement.setString(2, user.getSurname());
             statement.setString(3, user.getPhoneNumber());
             statement.setString(4, user.getUsername());
             statement.setString(5, user.getPassword());
-            statement.setInt(6, currentUserId);
+            statement.setString(6, user.getPictureUrl());
+            statement.setInt(7, currentUserId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

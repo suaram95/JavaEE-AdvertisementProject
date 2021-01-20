@@ -25,10 +25,13 @@
         request.getSession().removeAttribute("itemDetailMsg");
     }
 %>
+<a href="/logout">Logout</a>
 <div style="border: 1px black solid; width: 50%">
     <b>Welcome <%=currentUser.getName()%>  <%=currentUser.getSurname()%></b><br>
+    <%if (currentUser.getPictureUrl()!=null){%>
+    <img src="/image?path=<%=currentUser.getPictureUrl()%>" width="50" alt="">
+    <%}%> <br>
     <a href="/userDetails">My Details</a> <br>
-    <a href="/logout">Logout</a>
 </div>
 <br> <br>
 <div style="border: 1px black solid; width: 50%">
@@ -126,6 +129,7 @@
             <td style="color: royalblue">Surname</td>
             <td style="color: royalblue">PhoneNumber</td>
             <td style="color: royalblue">Username</td>
+            <td style="color: royalblue">Profile Picture</td>
         </tr>
         <% for (User user : userList) {
         if (user.getUserType()== UserType.USER){%>
@@ -134,6 +138,9 @@
             <td><%=user.getSurname()%></td>
             <td><%=user.getPhoneNumber()%></td>
             <td><%=user.getUsername()%></td>
+            <td><%if (user.getPictureUrl()!=null){%>
+                <img src="/image?path=<%=user.getPictureUrl()%>" width="30" alt="">
+                <%}%></td>
         </tr>
         <%}}%>
     </table>
