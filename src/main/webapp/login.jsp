@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
 </head>
 <body>
 <%
@@ -12,14 +14,19 @@
         session.removeAttribute("loginErrorMessage");
     }
 %>
-<div style="border: 1px black solid; width: 40%">
+<input type="radio" checked id="toggle--login" name="toggle" class="ghost" />
+<input type="radio" id="toggle--signup" name="toggle" class="ghost" />
+
+<img class="logo framed" src="https://www.tumblr.com/images/logo/logo_large.png?v=7ea0eb57dd627a95f82be5bde0c43d59" alt="Tumblr logo" />
+
+<form class="form form--login framed" action="/login" method="post">
     <p style="color: red"><%=loginErrorMessage%></p>
-    <form action="/login" method="post">
-        UserName: <input type="text" name="username"> <br>
-        Password: <input type="password" name="password"> <br>
-        <input type="submit" value="Login">
-    </form>
-</div>
+    <input type="text" placeholder="Username" name="username" class="input input--top" />
+    <input type="password" placeholder="Password" name="password" class="input" />
+    <input type="submit" value="Log in" class="input input--submit" />
+</form>
+
+<div class="fullscreen-bg"></div>
 
 </body>
 </html>

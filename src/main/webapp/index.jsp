@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Main Page</title>
+
 </head>
 <body>
 <%
@@ -12,8 +13,11 @@
        request.getSession().removeAttribute("message");
     }
 %>
-<p><%=msg%></p>
-Welcome to Our site<br>
-Please <a href="/login.jsp">Login</a> or <a href="/register.jsp">Register</a>
+<div style="background-color: bisque">
+    <p><%=msg%></p>
+    <b style="font-size: 50px">Welcome to Our site</b> <br>
+    Please <a href="/login.jsp" style="font-size: 20px">Login</a> or <a href="/register.jsp" style="font-size: 20px">Register</a>
+</div>
+
 </body>
 </html>
